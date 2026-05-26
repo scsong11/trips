@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Family Vacation 2026</title>
+    <style>
+        :root {
+            --primary: #1e3d59;
+            --secondary: #17b978;
+            --accent: #ff6f3c;
+            --bg: #f5f7fa;
+            --text: #333333;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        header {
+            background: linear-gradient(rgba(30, 61, 89, 0.85), rgba(30, 61, 89, 0.95)), 
+                        url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* Countdown Section */
+        .countdown-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .countdown-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .countdown-num {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .countdown-label {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* Tabs Navigation */
+        .tabs {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+            scrollbar-width: none;
+        }
+
+        .tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-btn {
+            background: #e8ecef;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #555;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Itinerary Content Cards */
+        .itinerary-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: none;
+        }
+
+        .itinerary-card.active {
+            display: block;
+        }
+
+        .date-header {
+            color: var(--primary);
+            border-bottom: 2px solid #e8ecef;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid #e8ecef;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--secondary);
+            border: 2px solid var(--card-bg);
+        }
+
+        .time {
+            font-weight: bold;
+            color: var(--accent);
+            font-size: 0.95rem;
+        }
+
+        .activity-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 2px 0 5px 0;
+        }
+
+        .details {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-left: 5px;
+            background: #e1f5fe;
+            color: #0288d1;
+        }
+
+        .badge.flight { background: #efebe9; color: #5d4037; }
+        .badge.hotel { background: #e8f5e9; color: #2e7d32; }
+
+        /* Packing Checklist Section */
+        .checklist-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-top: 30px;
+        }
+
+        .checklist-title {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .checklist-item input {
+            margin-right: 12px;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--secondary);
+        }
+
+        .checklist-item input:checked + span {
+            text-decoration: line-through;
+            color: #aaa;
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.8rem; }
+            .itinerary-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Song Family Vacation 2026</h1>
+        <p>San Francisco & Banff National Park Adventure</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- Countdown Timer -->
+        <div class="countdown-container">
+            <div class="countdown-title">Days until departure</div>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item"><span class="countdown-num" id="days">00</span><span class="countdown-label">Days</span></div>
+                <div class="countdown-item"><span class="countdown-num" id="hours">00</span><span class="countdown-label">Hours</span></div>
+                <div class="countdown-item"><span class="countdown-num" id="minutes">00</span><span class="countdown-label">Mins</span></div>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openDay(event, 'day1')">June 20</button>
+            <button class="tab-btn" onclick="openDay(event, 'day2')">June 21</button>
+            <button class="tab-btn" onclick="openDay(event, 'day3')">June 22</button>
+            <button class="tab-btn" onclick="openDay(event, 'day4')">June 23</button>
+            <button class="tab-btn" onclick="openDay(event, 'day5')">June 24</button>
+            <button class="tab-btn" onclick="openDay(event, 'day6')">June 25</button>
+            <button class="tab-btn" onclick="openDay(event, 'day7')">June 26</button>
+            <button class="tab-btn" onclick="openDay(event, 'day8')">Jun 27-28</button>
+        </div>
+
+        <!-- Day 1 -->
+        <div id="day1" class="itinerary-card active">
+            <div class="date-header">Saturday, June 20, 2026 — Transpacific Flight</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time">16:00</div>
+                    <div class="activity-title">Depart Seoul/Incheon (ICN) <span class="badge flight">KE023</span></div>
+                    <div class="details">Terminal 2. Prestige Class. Flight time: 10h 40m. Reference file: 1779417317965.jpeg.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">11:40 AM</div>
+                    <div class="activity-title">Arrive San Francisco (SFO)</div>
+                    <div class="details">Terminal 1 (International). Same-day arrival. Proceed to hotel check-in and rest.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 2 -->
+        <div id="day2" class="itinerary-card">
+            <div class="date-header">Sunday, June 21, 2026 — San Francisco</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time">Full Day</div>
+                    <div class="activity-title">Family Sightseeing</div>
+                    <div class="details">Free day spent exploring the Bay Area and visiting Minjoo.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 3 -->
+        <div id="day3" class="itinerary-card">
+            <div class="date-header">Monday, June 22, 2026 — Heading to the Rockies</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time">08:19 AM</div>
+                    <div class="activity-title">Depart San Francisco (SFO) <span class="badge flight">UA291</span></div>
+                    <div class="details">Flight to Calgary (YYC). Ensure early arrival at airport.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">12:03 PM</div>
+                    <div class="activity-title">Arrive Calgary International Airport</div>
+                    <div class="details">Pick up the rental vehicle and begin the scenic 2-hour drive into the Canadian Rockies.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">16:00</div>
+                    <div class="activity-title">Check-in: Fairmont Chateau Lake Louise <span class="badge hotel">Resort</span></div>
+                    <div class="details">Room Type: Deluxe Lakeview (2 Queen beds). Stunning alpine panoramas.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">Evening</div>
+                    <div class="activity-title">Relaxation & Dinner</div>
+                    <div class="details">Unwind at the newly opened Basin Glacial Waters facility using the included access pass. Dinner at the resort.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 4 -->
+        <div id="day4" class="itinerary-card">
+            <div class="date-header">Tuesday, June 23, 2026 — Exploring Lake Louise</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time">Morning</div>
+                    <div class="activity-title">Early Lakeside Exploration</div>
+                    <div class="details">Enjoy a quiet morning stroll along the lake before the day-use visitor crowds arrive.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">Daytime</div>
+                    <div class="activity-title">Canoeing & Hiking</div>
+                    <div class="details">Rent iconic red canoes to paddle out on the pristine turquoise waters, or head up the guided mountain trails.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 5 -->
+        <div id="day5" class="itinerary-card">
+            <div class="date-header">Wednesday, June 24, 2026 — Banff Highlights</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time">Daytime</div>
+                    <div class="activity-title">Banff Highlights Drive</div>
+                    <div class="details">Drive south to explore Banff townsite, check out Bow Falls, and take the Banff Gondola. Alternatively, drive north along the legendary Icefields Parkway.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">Evening</div>
+                    <div class="activity-title">Final Alpine Dinner</div>
+                    <div class="details">A final celebratory dinner overlooking the Victoria Glacier at the Chateau.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 6 -->
+        <div id="day6" class="itinerary-card">
+            <div class="date-header">Thursday, June 25, 2026 — Back to California</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time">12:00 PM</div>
+                    <div class="activity-title">Hotel Check-out</div>
+                    <div class="details">Conclude stay at Fairmont Chateau Lake Louise. Drive back to Calgary (YYC) and return rental car.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">15:22</div>
+                    <div class="activity-title">Depart Calgary (YYC) <span class="badge flight">UA2409</span></div>
+                    <div class="details">Return flight to SFO. Note: Checked luggage must be processed at least 60 minutes prior.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">17:23</div>
+                    <div class="activity-title">Arrive San Francisco (SFO)</div>
+                    <div class="details">Head to your designated Bay Area accommodation for the evening.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 7 -->
+        <div id="day7" class="itinerary-card">
+            <div class="date-header">Friday, June 26, 2026 — San Francisco</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time">Full Day</div>
+                    <div class="activity-title">Bay Area Free Day</div>
+                    <div class="details">Open itinerary for final group dining, shopping, and family relaxation before returning home.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 8 & 9 -->
+        <div id="day8" class="itinerary-card">
+            <div class="date-header">Sat–Sun, June 27–28, 2026 — Return Flight</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time">Sat 12:40</div>
+                    <div class="activity-title">Depart San Francisco (SFO) <span class="badge flight">KE024</span></div>
+                    <div class="details">Terminal 1. Prestige Class. Flight time: 12h 40m. Reference file: 1779417317965.jpeg.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">Sun 17:20</div>
+                    <div class="activity-title">Arrive Seoul/Incheon (ICN)</div>
+                    <div class="details">Terminal 2 arrival. Trip concludes.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mini Interactive Packing List -->
+        <div class="checklist-container">
+            <h3 class="checklist-title">Essential Checklist</h3>
+            <label class="checklist-item"><input type="checkbox"> <span>Passports & Travel Authorization (eTA for Canada)</span></label>
+            <label class="checklist-item"><input type="checkbox"> <span>Layered clothing (Banff mornings can be chilly)</span></label>
+            <label class="checklist-item"><input type="checkbox"> <span>Comfortable hiking/walking shoes</span></label>
+            <label class="checklist-item"><input type="checkbox"> <span>Swimwear (for Basin Glacial Waters pool)</span></label>
+            <label class="checklist-item"><input type="checkbox"> <span>Camera, charging blocks, & electronic gear</span></label>
+        </div>
+
+    </div>
+
+    <script>
+        // Tab switching logic
+        function openDay(evt, dayId) {
+            var i, itineraryCard, tabBtn;
+            itineraryCard = document.getElementsByClassName("itinerary-card");
+            for (i = 0; i < itineraryCard.length; i++) {
+                itineraryCard[i].style.display = "none";
+                itineraryCard[i].classList.remove("active");
+            }
+            tabBtn = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tabBtn.length; i++) {
+                tabBtn[i].className = tabBtn[i].className.replace(" active", "");
+            }
+            document.getElementById(dayId).style.display = "block";
+            document.getElementById(dayId).classList.add("active");
+            evt.currentTarget.className += " active";
+        }
+
+        // Live Countdown Timer
+        const targetDate = new Date("June 20, 2026 16:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference < 0) {
+                document.getElementById("countdown").innerHTML = "<h3>Trip is underway! 🏔️</h3>";
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 60000);
+        updateCountdown(); // Initial call
+    </script>
+</body>
+</html>
