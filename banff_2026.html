@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banff & Lake Louise · June 2026 — Song Family</title>
+<meta name="description" content="Song family trip itinerary: San Francisco, Calgary, Lake Louise & Banff, June 20–27, 2026.">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0d1117;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    padding: 32px 16px;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 680px; margin: 0 auto; }
+  .eyebrow {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.35); text-transform: uppercase; margin-bottom: 8px;
+  }
+  h1 { font-size: 38px; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .sub { font-size: 15px; color: rgba(255,255,255,0.45); margin-bottom: 20px; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0 40px; }
+  .card {
+    background: rgba(255,255,255,0.05); border-radius: 10px; padding: 12px 14px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .card .lbl { font-size: 10px; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+  .card .val { font-size: 17px; font-weight: 700; }
+  .card .sub2 { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+
+  .day { margin-bottom: 12px; }
+  .day-head {
+    padding: 16px 20px; cursor: pointer; display: flex; align-items: center;
+    justify-content: space-between; user-select: none; border-radius: 12px;
+    border: 1px solid; transition: border-radius 0.15s;
+  }
+  .day.open .day-head { border-radius: 12px 12px 0 0; }
+  .day-head-left { display: flex; align-items: center; gap: 14px; }
+  .badge {
+    color: #000; border-radius: 6px; padding: 3px 8px; font-size: 10px; font-weight: 800;
+    letter-spacing: 0.06em; text-transform: uppercase; flex-shrink: 0;
+  }
+  .day-title { font-size: 15px; font-weight: 700; line-height: 1.2; }
+  .day-meta { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+  .chev { color: rgba(255,255,255,0.4); font-size: 18px; margin-left: 10px; transition: transform 0.2s; }
+  .day.open .chev { transform: rotate(90deg); }
+
+  .day-body { display: none; background: #161b22; border: 1px solid; border-top: none; border-radius: 0 0 12px 12px; padding: 20px 20px 4px; }
+  .day.open .day-body { display: block; }
+  .day-note {
+    margin-bottom: 16px; padding: 8px 12px; background: rgba(100,180,255,0.07);
+    border-radius: 0 6px 6px 0; font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5;
+  }
+
+  .item { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.07); display: flex; align-items: flex-start; gap: 12px; }
+  .item:last-child { border-bottom: none; }
+  .item-icon {
+    min-width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0;
+  }
+  .item-time { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+  .item-title { font-size: 15px; font-weight: 600; margin-bottom: 6px; line-height: 1.3; }
+  .item-detail { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.5; }
+  .item-detail2 { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.5; margin-top: 4px; }
+  .conf {
+    display: inline-block; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px; padding: 2px 8px; font-size: 11px; letter-spacing: 0.03em;
+    color: rgba(255,255,255,0.75); margin-top: 6px; font-family: monospace;
+  }
+  .item-note {
+    margin-top: 8px; padding: 6px 10px; background: rgba(255,200,100,0.1);
+    border-left: 3px solid rgba(255,200,100,0.4); border-radius: 0 4px 4px 0;
+    font-size: 12px; color: rgba(255,220,120,0.85); line-height: 1.5;
+  }
+
+  .footer { margin: 32px auto 0; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.06); }
+  .footer h2 { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+  .rem { display: flex; gap: 8px; margin-bottom: 8px; align-items: flex-start; }
+  .rem .dot { color: rgba(255,200,100,0.5); font-size: 13px; margin-top: 1px; flex-shrink: 0; }
+  .rem .txt { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+  .credit { text-align: center; font-size: 11px; color: rgba(255,255,255,0.25); margin-top: 28px; }
+
+  @media (max-width: 520px) {
+    h1 { font-size: 30px; }
+    .cards { gap: 6px; }
+    .card { padding: 10px; }
+    .card .val { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Family Trip · June 20–27, 2026</div>
+  <h1>Banff &amp;<br>Lake Louise</h1>
+  <div class="sub">San Francisco · Calgary · Lake Louise · San Francisco</div>
+  <div class="cards">
+    <div class="card"><div class="lbl">SF arrival</div><div class="val">Jun 20</div><div class="sub2">2 nights Millbrae</div></div>
+    <div class="card"><div class="lbl">Rockies</div><div class="val">Jun 22–25</div><div class="sub2">Fairmont Château</div></div>
+    <div class="card"><div class="lbl">SF return</div><div class="val">Jun 25</div><div class="sub2">2 nights Millbrae</div></div>
+  </div>
+
+  <div id="days"></div>
+
+  <div class="footer">
+    <h2>Bookings &amp; reminders</h2>
+    <div id="reminders"></div>
+  </div>
+
+  <div class="credit">Song Family · songfamily.us</div>
+</div>
+
+<script>
+const days = [
+  {
+    date: "Sat, Jun 20", label: "ARRIVE SFO", title: "Korean Air arrival · San Francisco",
+    location: "ICN → SFO", color: "#1a3a5c", accent: "#4a9fd4", who: "Sang & Hyesook",
+    note: "Emily & Minjoo are not on this leg — they join the family in San Francisco.",
+    items: [
+      { time: "Jun 20", icon: "✈", title: "Korean Air KE 23 — ICN → SFO", detail: "Sang & Hyesook fly Seoul Incheon to San Francisco. Departs ICN 16:00, arrives SFO 10:40 same day (10h 40m, 787-10). Business class — Sang 16B, Hyesook 15A.", conf: "Sang E4UB3N · Hyesook E6O7PV" },
+      { time: "11:00 AM pickup", icon: "🚗", title: "Hertz — Chevrolet Malibu (SFO)", detail: "SFO airport, 780 McDonnell Road · open 24h. Pick up Jun 20, return Jun 22.", detail2: "2 days · USD 153.74 · Samsung Electronics CDP rate · unlimited miles", conf: "Confirmation L4801368528" },
+      { time: "3:00 PM check-in", icon: "🏨", title: "Residence Inn Millbrae Station", detail: "161 North Rollins Rd, Millbrae, CA 94030 · +1-650-490-4603", detail2: "Studio, 2 Queen, City view · 2 nights (Jun 20–22) · 2 adults · Bonvoy Gold", conf: "Confirmation #76385967" }
+    ]
+  },
+  {
+    date: "Sun, Jun 21", label: "SF DAY", title: "San Francisco — free day",
+    location: "Bay Area", color: "#2a3a1a", accent: "#8abd5c", who: "Sang & Hyesook (+ family as they arrive)",
+    items: [
+      { time: "All day", icon: "🌉", title: "Explore San Francisco", detail: "Millbrae is one stop from SFO and on BART — downtown SF is ~30 min by train. Good day to recover from the long-haul flight and regroup before flying to Calgary." },
+      { time: "Ideas", icon: "📍", title: "Options", detail: "Golden Gate Bridge & Presidio, Ferry Building, Fisherman's Wharf, or a coastal drive down Highway 1 to Half Moon Bay. Keep it light — an early start follows on Monday." }
+    ]
+  },
+  {
+    date: "Mon, Jun 22", label: "DAY 1", title: "Fly to Calgary · Drive to Lake Louise",
+    location: "SFO → YYC → Lake Louise", color: "#1a4a2e", accent: "#5cbf7f", who: "Sang · Hyesook · Emily · Minjoo",
+    items: [
+      { time: "11:00 AM", icon: "🚗", title: "Return Malibu at SFO", detail: "Drop the SFO Malibu back at the airport before checking in for the Calgary flight.", conf: "Confirmation L4801368528" },
+      { time: "Morning flight", icon: "✈", title: "United UA 291 — SFO → YYC", detail: "Departs San Francisco morning, arrives Calgary around midday. Economy. All four travelers, seats 30C / 30D / 30E / 30F.", conf: "Confirmation B5Z7ZL · paid 212,800 UA miles + $265.72", note: "Reconfirm exact departure time — United emailed a schedule change on May 27. Check the latest time in the app before leaving for SFO." },
+      { time: "12:30 PM", icon: "🚙", title: "Hertz Pickup — Tesla Model 3 SR (YYC)", detail: "Calgary International Airport, 2000 Airport Rd NE. 3 days, return Jun 25 12:30 PM.", detail2: "CAD 95/day · total CAD 371.46 · Samsung CDP rate · unlimited km", conf: "Confirmation L4803562107" },
+      { time: "~2:30 PM", icon: "🏔", title: "Drive Calgary → Lake Louise", detail: "~180 km via Trans-Canada Hwy 1, roughly 2 hours. The Rockies open up past Canmore — watch for wildlife along the way." },
+      { time: "From 4 PM", icon: "🏰", title: "Check in — Fairmont Château Lake Louise", detail: "111 Lake Louise Drive, Lake Louise, AB T0L 1E0 · +1-403-522-3511", detail2: "3 nights (Jun 22–25) · 4 guests", conf: "Reservation QCHPBSFK" },
+      { time: "3:30 PM", icon: "💧", title: "BASIN Glacial Waters — Family Session", detail: "Within the Fairmont. 3-Hour Basin Experience for all four. 18+ only; no phones or devices inside.", detail2: "Sang #130513367 · Hyesook #130513368 · Minjoo #130513369 · Emily #130513370 · CAD $275pp ($1,100)", conf: "Reservation #0025PCRF", note: "⚠ Timing is tight against the flight + drive. If the Calgary arrival or drive runs late, call BASIN ahead — 24-hour cancellation policy applies." }
+    ]
+  },
+  {
+    date: "Tue, Jun 23", label: "DAY 2", title: "Lake Louise & Moraine Lake",
+    location: "Lake Louise", color: "#3a2a5c", accent: "#9b7fd4", who: "Sang · Hyesook · Emily · Minjoo",
+    note: "Late June daylight runs until ~10 PM, so there's plenty of time for a relaxed pace.",
+    items: [
+      { time: "Early morning", icon: "🚶", title: "Lake Louise lakeshore", detail: "The turquoise lake is a few minutes' walk from the Château. Go early for mirror reflections before the crowds. The flat lakeshore trail runs toward the Plain of Six Glaciers." },
+      { time: "Before 8 AM", icon: "🌿", title: "Moraine Lake", detail: "~15 km away and arguably even more stunning. Private vehicles are restricted — use the Parks Canada shuttle or a local connector; reserve in advance, as same-day spots are scarce." },
+      { time: "Afternoon", icon: "🏔", title: "Lake Agnes Tea House hike", detail: "About 7 km round trip with ~400 m gain from the Château. Historic tea house at the top; bring cash. A good family option with a clear payoff." },
+      { time: "Evening", icon: "🍽", title: "Dinner at the Fairmont", detail: "Walliser Stube for Swiss fondue, Fairview for Canadian cuisine with lake views, or 1913 for fine dining. Reserve ahead in peak season." }
+    ]
+  },
+  {
+    date: "Wed, Jun 24", label: "DAY 3", title: "Banff Townsite · Gondola · Johnston Canyon",
+    location: "Banff National Park", color: "#4a2a1a", accent: "#d4855c", who: "Sang · Hyesook · Emily · Minjoo",
+    items: [
+      { time: "Morning", icon: "🏙", title: "Drive to Banff townsite", detail: "~55 km from Lake Louise. Stroll Banff Avenue and the shops, and visit the Cave & Basin National Historic Site, the birthplace of Canada's national parks." },
+      { time: "Midday", icon: "🚡", title: "Banff Gondola — Sulphur Mountain", detail: "Eight-minute ride to a 2,281 m summit with boardwalks and six-range views. Book online ahead of time." },
+      { time: "Afternoon", icon: "🌊", title: "Johnston Canyon", detail: "Catwalks through a limestone gorge to the Lower (easy) and Upper (moderate) Falls. Very popular — go mid-afternoon or take the Bow Valley Parkway scenic route." },
+      { time: "Dusk", icon: "🌅", title: "Return via Bow Valley Parkway (Hwy 1A)", detail: "Slower, scenic alternative back to Lake Louise with frequent dusk wildlife sightings — elk, deer, the occasional bear." }
+    ]
+  },
+  {
+    date: "Thu, Jun 25", label: "DAY 4", title: "Checkout · Calgary · Fly to SFO",
+    location: "Lake Louise → YYC → SFO", color: "#1a3a5c", accent: "#4a9fd4", who: "Sang · Hyesook · Emily · Minjoo",
+    items: [
+      { time: "By 11 AM", icon: "🏰", title: "Checkout — Fairmont Château Lake Louise", detail: "Squeeze in a final lakeshore walk before loading the Tesla. Depart by ~10 AM for a comfortable buffer.", conf: "Reservation QCHPBSFK" },
+      { time: "12:30 PM", icon: "🚙", title: "Return Tesla at Calgary Airport", detail: "Return by 12:30 PM. ~2 hr drive from Lake Louise, so leave by ~10 AM.", conf: "Confirmation L4803562107" },
+      { time: "Afternoon flight", icon: "✈", title: "United UA 2409 — YYC → SFO", detail: "Departs Calgary afternoon, arrives San Francisco early evening. Economy. All four, seats 30C / 30D / 30E / 30F.", conf: "Confirmation B5Z7ZL", note: "Reconfirm exact times in the app — same May 27 schedule-change caveat as the outbound leg." },
+      { time: "3:30 PM pickup", icon: "🚗", title: "Hertz — Chevrolet Malibu (SFO)", detail: "SFO airport, 780 McDonnell Road. Pick up Jun 25 3:30 PM, return Jun 27 10:30 AM.", detail2: "2 days · USD 153.74 · Samsung CDP rate · unlimited miles", conf: "Confirmation L48012857C7" },
+      { time: "Evening check-in", icon: "🏨", title: "Residence Inn Millbrae Station", detail: "161 North Rollins Rd, Millbrae. 2 nights (Jun 25–27), paid with 102,000 Bonvoy points.", conf: "Confirmation #78751784" }
+    ]
+  },
+  {
+    date: "Fri, Jun 26", label: "DAY 5", title: "San Francisco — family day",
+    location: "Bay Area", color: "#2a3a1a", accent: "#8abd5c", who: "Sang · Hyesook · Emily · Minjoo",
+    items: [
+      { time: "All day", icon: "🌉", title: "San Francisco together", detail: "Last full day with all four. Alcatraz (book well ahead), Muir Woods (~25 min from Millbrae), the Exploratorium, or a Napa/Sonoma day trip if you want to venture further." },
+      { time: "Note", icon: "🧳", title: "Prep for split departures", detail: "Hyesook flies to Washington Dulles (UA 1791, 1:15 PM departure) tomorrow; pack and confirm tonight." }
+    ]
+  },
+  {
+    date: "Sat, Jun 27", label: "DEPART", title: "Departures — the group splits",
+    location: "SFO", color: "#3a1a2a", accent: "#d45c85", who: "Separate paths",
+    note: "Tight morning: the SFO Malibu is due back by 10:30 AM, then Sang (KE 24, 12:40 PM) and Hyesook (UA 1791, 1:15 PM) both have early-afternoon departures. Build in buffer — return the car early and head straight to the terminals.",
+    items: [
+      { time: "By 10:30 AM", icon: "🚗", title: "Return Malibu at SFO", detail: "Drop the second SFO Malibu by 10:30 AM.", conf: "Confirmation L48012857C7" },
+      { time: "By 11 AM", icon: "🏨", title: "Checkout — Residence Inn Millbrae", detail: "End of the Bonvoy-points stay.", conf: "Confirmation #78751784" },
+      { time: "12:40 PM", icon: "🛫", title: "Sang — KE 24 · SFO → Seoul (ICN)", detail: "Korean Air home-leave return. Departs SFO 12:40 PM Jun 27, arrives ICN 5:20 PM Jun 28 (12h 40m, 787-10). Business, seat 12A. Terminal 2 on arrival.", conf: "Booking E4UB3N · Ticket 180-9297853744" },
+      { time: "1:15 PM", icon: "✈", title: "Hyesook — UA 1791 · SFO → Washington Dulles (IAD)", detail: "Departs SFO 1:15 PM, arrives IAD 9:25 PM (5h 10m). United Economy (V), seat 35J aisle. From IAD she flies KE 94 to Seoul (ICN) on Jul 3, 1:30 PM → arriving Jul 4 (Business, seat 07A, booking E6O7PV).", detail2: "Was UA 433 / 1:00 PM — rebooked via United's May 27 schedule change.", conf: "Confirmation AMZJPH" },
+      { time: "Jun 27", icon: "🏡", title: "Emily & Minjoo — staying in the U.S.", detail: "Emily and Minjoo are not returning to Korea with Sang; they remain stateside." }
+    ]
+  }
+];
+
+const reminders = [
+  "Three rental cars: SFO Malibu Jun 20–22 (L4801368528), YYC Tesla Jun 22–25 (L4803562107), SFO Malibu Jun 25–27 (L48012857C7). All Samsung CDP rate.",
+  "Two Millbrae stays: arrival #76385967 (Jun 20–22, cash/points), return #78751784 (Jun 25–27, 102,000 points). Not duplicates.",
+  "United B5Z7ZL had a May 27 schedule change — reconfirm both flight times before each airport run.",
+  "Carry an International Driving Permit alongside your license for all rentals.",
+  "BASIN: 18+, no devices, 24-hr cancellation. The Jun 22 3:30 PM slot is tight against the flight + 2-hr drive.",
+  "Jun 27 splits three ways: Sang KE 24 SFO→ICN 12:40 PM (E4UB3N, arrives Jun 28), Hyesook UA 1791 SFO→IAD 1:15 PM (AMZJPH) then KE 94 IAD→ICN Jul 3 (E6O7PV), Emily & Minjoo stay in the U.S.",
+  "Jun 27 morning is tight: Malibu due back 10:30 AM, two early-afternoon departures. Return the car early and go straight to the terminals."
+];
+
+function esc(s){ const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+
+function renderItem(item, accent){
+  let h = '<div class="item"><div class="item-icon">'+item.icon+'</div><div style="flex:1">';
+  if(item.time) h += '<div class="item-time" style="color:'+accent+'">'+esc(item.time)+'</div>';
+  h += '<div class="item-title">'+esc(item.title)+'</div>';
+  h += '<div class="item-detail">'+esc(item.detail)+'</div>';
+  if(item.detail2) h += '<div class="item-detail2">'+esc(item.detail2)+'</div>';
+  if(item.conf) h += '<div><span class="conf">'+esc(item.conf)+'</span></div>';
+  if(item.note) h += '<div class="item-note">'+esc(item.note)+'</div>';
+  h += '</div></div>';
+  return h;
+}
+
+const container = document.getElementById('days');
+days.forEach((day, i) => {
+  const el = document.createElement('div');
+  el.className = 'day' + (i === 2 ? ' open' : '');
+  let body = '';
+  if(day.note) body += '<div class="day-note" style="border-left:3px solid '+day.accent+'">'+esc(day.note)+'</div>';
+  day.items.forEach(it => body += renderItem(it, day.accent));
+  el.innerHTML =
+    '<div class="day-head" style="background:'+day.color+';border-color:'+day.accent+'4d">'
+      + '<div class="day-head-left">'
+        + '<div class="badge" style="background:'+day.accent+'">'+esc(day.label)+'</div>'
+        + '<div><div class="day-title">'+esc(day.title)+'</div>'
+        + '<div class="day-meta">'+esc(day.date)+' · '+esc(day.location)+' · '+esc(day.who)+'</div></div>'
+      + '</div><div class="chev">&rsaquo;</div></div>'
+    + '<div class="day-body" style="border-color:'+day.accent+'40">'+body+'</div>';
+  el.querySelector('.day-head').addEventListener('click', () => el.classList.toggle('open'));
+  container.appendChild(el);
+});
+
+const rem = document.getElementById('reminders');
+reminders.forEach(r => {
+  const d = document.createElement('div');
+  d.className = 'rem';
+  d.innerHTML = '<span class="dot">&bull;</span><span class="txt">'+esc(r)+'</span>';
+  rem.appendChild(d);
+});
+</script>
+</body>
+</html>
